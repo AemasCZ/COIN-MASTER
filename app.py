@@ -576,7 +576,7 @@ def apply_row_styles(row):
     base_style = get_color_by_rank(rank, force_text_color='black')
     if base_style:
         styles[('Rebelové', 'Pořadí')] = base_style
->>>>>>> 01c9944446ed38b94af70d3f7209d38763011d8d
+
 
     # Ještě světlejší modrá ve sloupci '⌀ skóre'
     styles[('Rebelové', '⌀ skóre')] = 'background-color: #e6f3ff; color: black; font-weight: bold;'
