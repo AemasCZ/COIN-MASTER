@@ -568,24 +568,25 @@ def apply_row_styles(row):
     # Přistupujeme k hodnotám podle tuple (top_level, bottom_level)
     rank = row[('Rebelové', 'Pořadí')]
 
-
-    # 1) Styl pro sloupec 'Pořadí' (uvnitř skupiny Rebelové) - jednotné světle modré pozadí
-    styles[('Rebelové', 'Pořadí')] = 'background-color: #cfe8ff; color: black;'
-
-    # Světle modrá ve sloupci 'Pořadí'
+    # Styl pro sloupec 'Pořadí' – barva podle ranku
     base_style = get_color_by_rank(rank, force_text_color='black')
     if base_style:
         styles[('Rebelové', 'Pořadí')] = base_style
-
+    else:
+        # fallback – jednotná světle modrá
+        styles[('Rebelové', 'Pořadí')] = 'background-color: #cfe8ff; color: black;'
 
     # Ještě světlejší modrá ve sloupci '⌀ skóre'
-    styles[('Rebelové', '⌀ skóre')] = 'background-color: #e6f3ff; color: black; font-weight: bold;'
+    styles[('Rebelové', '⌀ skóre')] = (
+        'background-color: #e6f3ff; color: black; font-weight: bold;'
+    )
 
     # Stylování černých separátorů
     styles[(' ', ' ')] = 'background-color: black;'
     styles[('  ', '  ')] = 'background-color: black;'
 
     return styles
+
 
 # Stylování DataFrame
 styled_df = vystup_df.style
